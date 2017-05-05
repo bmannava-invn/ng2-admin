@@ -125,6 +125,14 @@ export const PAGES_MENU = [
             }
           },
           {
+            path: 'slim',
+            data: {
+              menu: {
+                title: 'Slim loading bar',
+              }
+            }
+          },
+          {
             path: 'grid',
             data: {
               menu: {
@@ -199,7 +207,15 @@ export const PAGES_MENU = [
                 title: 'Data Tables',
               }
             }
-          }
+          },
+           {
+             path: 'hottables',
+             data: {
+               menu: {
+                 title: 'Hot Tables',
+               }
+             }
+           }
         ]
       },
       {
