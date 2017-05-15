@@ -3,6 +3,7 @@ import { HttpController } from './http.controller';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class AuthenticationService {
@@ -14,7 +15,7 @@ export class AuthenticationService {
   private progress: boolean = false;
   private rememberme: boolean;
 
-  constructor(http: Http, private router: Router, private localStorage: LocalStorageService) {
+  constructor(http: Http, private router: Router, private localStorage: LocalStorageService, private toastrService: ToastrService) {
     this.http = <HttpController> http;
     let accessToken = <string>this.localStorage.get(AuthenticationService.ACCESS_TOKEN_KEY);
     if (accessToken) {
@@ -42,6 +43,7 @@ export class AuthenticationService {
       this.lastError = error.status === 401 || error.status === 400 ? 'Invalid username or password' : error.statusText;
       this.loggedIn = false;
       this.progress = false;
+      this.toastrService.error('Username or Password is wrong!', 'Oops!');
     });
   }
 

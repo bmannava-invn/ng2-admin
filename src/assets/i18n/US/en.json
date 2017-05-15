@@ -2,7 +2,7 @@
   "login": {
     "title": "Sign in to ng2-admin",
     "signup_link": "New to ng2-admin? Sign up!",
-    "email": "Email",
+    "email": "Username",
     "password": "Password",
     "rememberme": "Remember Me",
     "sign_in": "Sign in",

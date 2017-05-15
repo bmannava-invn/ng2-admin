@@ -1,11 +1,13 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { LocalStorageModule, LocalStorageService } from 'angular-2-local-storage';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -47,6 +49,7 @@ export type StoreType = {
   imports: [ // import Angular's modules
     BrowserModule,
     HttpModule,
+    BrowserAnimationsModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
@@ -54,6 +57,7 @@ export type StoreType = {
     NgbModule.forRoot(),
     PagesModule,
     routing,
+    ToastrModule.forRoot(),
     LocalStorageModule.withConfig({
       prefix: "ng2-admin",
       storageType: "localStorage"
