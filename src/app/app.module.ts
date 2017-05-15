@@ -1,7 +1,8 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
+import { LocalStorageModule, LocalStorageService } from 'angular-2-local-storage';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,6 +17,11 @@ import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
+
+import { HttpController } from '../services/http.controller';
+import { httpFactory } from '../services/http.factory';
+import { routes } from './app.routing';
+
 
 
 // Application wide providers
@@ -47,10 +53,20 @@ export type StoreType = {
     NgaModule.forRoot(),
     NgbModule.forRoot(),
     PagesModule,
-    routing
+    routing,
+    LocalStorageModule.withConfig({
+      prefix: "ng2-admin",
+      storageType: "localStorage"
+    })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    LocalStorageService,
+    {
+      provide: Http,
+      deps: [XHRBackend, RequestOptions],
+      useFactory: httpFactory
+    }
   ]
 })
 

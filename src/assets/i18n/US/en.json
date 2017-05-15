@@ -4,6 +4,7 @@
     "signup_link": "New to ng2-admin? Sign up!",
     "email": "Email",
     "password": "Password",
+    "rememberme": "Remember Me",
     "sign_in": "Sign in",
     "forgot_password": "Forgot password?",
     "sign_from_app_text": "or Sign in with one click",

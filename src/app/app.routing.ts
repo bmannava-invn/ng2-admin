@@ -1,8 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
+import { RouteController } from '../services/route.controller.service';
+
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  { path: 'login', redirectTo: 'login' },
+  // { path: '', redirectTo: 'pages', canActivate: [RouteController] },
   { path: '**', redirectTo: 'pages/dashboard' }
 ];
 

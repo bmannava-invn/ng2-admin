@@ -22,6 +22,11 @@ import { PieChartService } from './pieChart/pieChart.service';
 import { TodoService } from './todo/todo.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UsersMapService } from './usersMap/usersMap.service';
+import { RouteController } from '../../../services/route.controller.service';
+import { AuthenticationService } from '../../../services/auth.service';
+import { LocalStorageService } from 'angular-2-local-storage';
+
+
 
 @NgModule({
   imports: [
@@ -49,7 +54,10 @@ import { UsersMapService } from './usersMap/usersMap.service';
     PieChartService,
     TodoService,
     TrafficChartService,
-    UsersMapService
+    UsersMapService,
+    RouteController,
+    AuthenticationService,
+    LocalStorageService
   ]
 })
 export class DashboardModule {}
