@@ -55,6 +55,7 @@ export class AuthenticationService {
         this.localStorage.remove('password');
       }
       this.setLoggedIn(false);
+      this.router.navigate(['/login']);
     // }, () => this.progress = false);
   }
 
