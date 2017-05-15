@@ -94,7 +94,6 @@ export class HttpController extends Http {
           } else {
             url = remoteUrl;
           }
-          console.log(url);
           this.setAuthorizationHeader(url, options);
           return super.request(url, options)
         }

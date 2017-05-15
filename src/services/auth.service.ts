@@ -12,6 +12,7 @@ export class AuthenticationService {
   private http: HttpController = null;
   private lastError: string;
   private progress: boolean = false;
+  private rememberme: boolean;
 
   constructor(http: Http, private router: Router, private localStorage: LocalStorageService) {
     this.http = <HttpController> http;
@@ -27,8 +28,16 @@ export class AuthenticationService {
     });
   }
 
-  public login(username: string, password: string): void {
+  public login(username: string, password: string, rememberme: boolean): void {
     this.progress = true;
+    if (rememberme) {
+      this.localStorage.set('username', username);
+      this.localStorage.set('password', password);
+      this.rememberme = rememberme;
+    } else {
+      this.localStorage.remove('username');
+      this.localStorage.remove('password');
+    }
     this.http.authenticate(username, password).subscribe(null, (error) => {
       this.lastError = error.status === 401 || error.status === 400 ? 'Invalid username or password' : error.statusText;
       this.loggedIn = false;
@@ -41,6 +50,10 @@ export class AuthenticationService {
     this.http.post('/logout', null).subscribe(() => {
       this.progress = false;
       this.localStorage.remove(AuthenticationService.ACCESS_TOKEN_KEY);
+      if (this.rememberme) {
+        this.localStorage.remove('username');
+        this.localStorage.remove('password');
+      }
       this.setLoggedIn(false);
     }, () => this.progress = false);
   }

@@ -13,8 +13,8 @@ export class Login {
   public form: FormGroup;
   public email: AbstractControl;
   public password: AbstractControl;
-  public checkbox: AbstractControl;
   public submitted: boolean = false;
+  public rememberme: boolean;
 
   constructor(fb:FormBuilder, private router: Router, private authService: AuthenticationService) {
     this.form = fb.group({
@@ -24,20 +24,10 @@ export class Login {
 
     this.email = this.form.controls['email'];
     this.password = this.form.controls['password'];
-    // this.checkbox = this.form.controls['checkbox'];
   }
 
   protected login() {
-    // console.log(this.checkbox.value);
-    this.authService.login(this.email.value, this.password.value);
+    this.authService.login(this.email.value, this.password.value, this.rememberme);
   }
-
-  // public onSubmit(values:Object):void {
-  //   this.submitted = true;
-  //   if (this.form.valid) {
-  //     this.router.navigate(['/pages']);
-  //     // your code goes here
-  //     // console.log(values);
-  //   }
-  // }
+ 
 }
