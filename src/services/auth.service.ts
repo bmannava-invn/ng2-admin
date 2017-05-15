@@ -47,7 +47,7 @@ export class AuthenticationService {
 
   public logout(): void {
     this.progress = true;
-    this.http.post('/logout', null).subscribe(() => {
+    // this.http.post('/logout', null).subscribe(() => {
       this.progress = false;
       this.localStorage.remove(AuthenticationService.ACCESS_TOKEN_KEY);
       if (this.rememberme) {
@@ -55,7 +55,7 @@ export class AuthenticationService {
         this.localStorage.remove('password');
       }
       this.setLoggedIn(false);
-    }, () => this.progress = false);
+    // }, () => this.progress = false);
   }
 
   public inProgress(): boolean {
