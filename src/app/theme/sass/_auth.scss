@@ -46,7 +46,11 @@ $text-color: #ffffff;
   }
 
   .remember {
-    line-height: -34px;
+    vertical-align: top;
+  }
+
+  span {
+    margin-left: 5px;
   }
 }
 

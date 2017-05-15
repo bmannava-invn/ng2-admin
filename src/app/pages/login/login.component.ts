@@ -24,11 +24,11 @@ export class Login {
 
     this.email = this.form.controls['email'];
     this.password = this.form.controls['password'];
-    this.checkbox = this.form.controls['checkbox'];
+    // this.checkbox = this.form.controls['checkbox'];
   }
 
   protected login() {
-    console.log(this.checkbox.value);
+    // console.log(this.checkbox.value);
     this.authService.login(this.email.value, this.password.value);
   }
 
