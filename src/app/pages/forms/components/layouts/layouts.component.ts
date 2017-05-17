@@ -9,7 +9,7 @@ export class Layouts {
 
   public defaultPicture = 'assets/img/theme/no-photo.png';
   public profile:any = {
-    picture: 'assets/img/app/profile/avatar-5.png'
+    picture: 'assets/img/app/profile/venue-logo-circle.png'
   };
   public uploaderOptions:NgUploaderOptions = {
     // url: 'http://website.com/upload'

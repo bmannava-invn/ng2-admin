@@ -1,5 +1,5 @@
-$default: #ffffff; // default colors for layout
-$body-bg: #F0F3F4; // default bg color
+$default: #0046ad; // default colors for layout
+$body-bg: #cccccc; // default bg color
 
 $default-text: $default; // default text color layout (usually is the same as $default)
 $content-text: $default-text; // content text color on card, panels, form, etc
@@ -15,7 +15,7 @@ $input-background: rgba(255, 255, 255, 0.1); // input border color for hover
 $dropdown-text: #7d7d7d; // dropdown text color
 
 // sidebar colors
-$sidebar: #282828;
+$sidebar: #0046ad;
 $sidebar-text: #ffffff;
 
 // specific components colors
@@ -27,17 +27,17 @@ $progress-default: rgba($default-text, 0.95);
 // bootstrap card panel styles
 $bootstrap-panel-radius: 7px;
 $bootstrap-panel-text: #ffffff;
-$bootstrap-panel-bg: rgba(255, 255, 255, 0.1);
+$bootstrap-panel-bg: rgba(255, 255, 255, 0.20);
 $bootstrap-panel-header-bg: transparent;
 $bootstrap-panel-header-border: 1px solid $border-light;
 $bootstrap-panel-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
 
 // color scheme
-$primary: #00abff !default;
-$info: #40daf1 !default;
-$success: #8bd22f !default;
-$warning: #e7ba08 !default;
-$danger: #f95372 !default;
+$primary: #336bbd !default;
+$info: #3399ff !default;
+$success: #5cb85c !default;
+$warning: #f0ad4e !default;
+$danger: #d9534f !default;
 
 $primary-light: tint($primary, 30%);
 $info-light: tint($info, 30%);
