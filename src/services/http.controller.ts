@@ -24,7 +24,7 @@ export class HttpController extends Http {
 
   private eventEmitter: EventEmitter = new EventEmitter();
 
-  private serverUrl: null;
+  private serverUrl: string;
 
   constructor(backend: ConnectionBackend, defaultOptions: RequestOptions) {
     super(backend, defaultOptions);
@@ -32,17 +32,25 @@ export class HttpController extends Http {
 
   private getServerUrl(url): Observable<string> {
     return new Observable((observer: PartialObserver<any>) => {
-      if (!this.serverUrl) {
+
+      if (url === "/assets/i18n/US/en.json") {
         let options = new RequestOptions();
         options.method = RequestMethod.Get;
-        super.request("/config", options).map(res => {
+        observer.next('assets/i18n/US/en.json');
+        observer.complete();
+        /*super.request("/config", options).map(res => {
           this.serverUrl = res.json().server_url;
           return `${this.serverUrl}${url}`;
         }).subscribe((url) => {
-          observer.next(url);
-          observer.complete();
-        }, (error: any | Response) => observer.error(error));
+
+        }, (error: any | Response) => observer.error(error));*/
+
+//        return `${this.serverUrl}${url}`;
+        observer.next(`${this.serverUrl}${url}`);
+        observer.complete();
+
       } else {
+        this.serverUrl = "https://gi3lj341s9.execute-api.us-east-1.amazonaws.com/dev";
         observer.next(`${this.serverUrl}${url}`);
         observer.complete();
       }
@@ -57,12 +65,17 @@ export class HttpController extends Http {
     }
   }
 
-  private static getAuthenticationRequestOptions(body: String): RequestOptions {
+  private static getAuthenticationRequestOptions(obj:String): RequestOptions {
+
     let refreshOptions = new BaseRequestOptions();
-    refreshOptions.method = RequestMethod.Post;
-    refreshOptions.body = body;
+    refreshOptions.method = RequestMethod.Get;
+    refreshOptions.body = obj;
+    let creds = JSON.parse(obj.toString());
     refreshOptions.headers = new Headers({
       "Content-Type": "application/json",
+      "x-api-key":"718001be-29ff-11e7-93ae-92361f002671",
+      "Authorization": 'Basic ' + btoa(creds.username + ':' + creds.password)
+
     });
     return refreshOptions;
   }
@@ -87,7 +100,7 @@ export class HttpController extends Http {
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
     let localUrl = typeof url !== "string" ? (<Request> url).url : url;
-    return new Observable((observer: PartialObserver<any>) => {      
+    return new Observable((observer: PartialObserver<any>) => {
       return this.getServerUrl(localUrl).flatMap((remoteUrl) => {
           if (typeof url !== "string") {
             (<Request> url).url = remoteUrl;
@@ -99,7 +112,7 @@ export class HttpController extends Http {
         }
       ).subscribe((res) => observer.next(res), (error: any | Response) => this.handleHttpError(error, observer),
         () => observer.complete());
-    });    
+    });
   }
 
 
@@ -109,7 +122,7 @@ export class HttpController extends Http {
         username: username,
         password: password
       }));
-      this.getServerUrl('/login').flatMap(url => super.request(url, options)).map((res: Response) => res.json())
+      this.getServerUrl('/user/auth').flatMap(url => super.request(url, options)).map((res: Response) => res.json())
         .subscribe((res: any) => {
           this.setAccessToken(res.token);
           observer.next(res);
