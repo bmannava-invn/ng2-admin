@@ -124,7 +124,7 @@ export class HttpController extends Http {
       }));
       this.getServerUrl('/user/auth').flatMap(url => super.request(url, options)).map((res: Response) => res.json())
         .subscribe((res: any) => {
-          this.setAccessToken(res.token);
+          this.setAccessToken(res.data.access_token);
           observer.next(res);
         }, (error: any | Request) => observer.error(error), () => observer.complete());
     });
