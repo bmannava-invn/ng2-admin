@@ -13,7 +13,7 @@ export const PAGES_MENU = [
             order: 0
           }
         }
-      },
+      }/*,
       {
         path: 'editors',
         data: {
@@ -348,7 +348,7 @@ export const PAGES_MENU = [
             target: '_blank'
           }
         }
-      }
+      }*/
     ]
   }
 ];
