@@ -122,7 +122,7 @@ export class HttpController extends Http {
         username: username,
         password: password
       }));
-      this.getServerUrl('/user/auth').flatMap(url => super.request(url, options)).map((res: Response) => res.json())
+      this.getServerUrl('user/auth').flatMap(url => super.request(url, options)).map((res: Response) => res.json())
         .subscribe((res: any) => {
           this.setAccessToken(res.data.access_token);
           observer.next(res);
