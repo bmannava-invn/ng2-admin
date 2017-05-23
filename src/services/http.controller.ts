@@ -50,7 +50,7 @@ export class HttpController extends Http {
         observer.complete();
 
       } else {
-        this.serverUrl = "https://gi3lj341s9.execute-api.us-east-1.amazonaws.com/dev";
+        this.serverUrl = "https://testapi.coursaretail.com/v1/coursa/";
         observer.next(`${this.serverUrl}${url}`);
         observer.complete();
       }
