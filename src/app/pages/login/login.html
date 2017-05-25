@@ -18,7 +18,7 @@
           <input [formControl]="password" type="password" class="form-control" id="inputPassword3" placeholder="{{'login.password' | translate}}">
         </div>
       </div>
-      <div class="form-group row">
+      <!--<div class="form-group row">
 
         <div class="col-sm-2"></div>
 
@@ -26,9 +26,7 @@
           <input type="checkbox" id="rememberme" [(ngModel)]="rememberme" class="remember" [ngModelOptions]="{standalone: true}"><span>Remember Me</span>
         </div>
 
-         <!--<label for="inputRemember" class="col-sm-9 remember" translate>{{'login.rememberme'}}</label>-->
-
-      </div>
+      </div>-->
       <div class="form-group row">
         <div class="offset-sm-2 col-sm-10">
           <button [disabled]="!form.valid" class="btn btn-default btn-auth" (click)="login()" translate>{{'login.sign_in'}}</button>
