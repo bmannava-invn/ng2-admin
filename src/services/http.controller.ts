@@ -12,6 +12,7 @@ import {
 import { Observable } from 'rxjs';
 import { PartialObserver } from 'rxjs/Observer';
 import { EventEmitter } from 'events';
+import {AppSettings} from "./app.settings";
 
 @Injectable()
 export class HttpController extends Http {
@@ -39,19 +40,18 @@ export class HttpController extends Http {
         observer.next('assets/i18n/US/en.json');
         observer.complete();
         /*super.request("/config", options).map(res => {
-          this.serverUrl = res.json().server_url;
-          return `${this.serverUrl}${url}`;
+          AppSettings.API_ENDPOINT = res.json().server_url;
+          return `${AppSettings.API_ENDPOINT}${url}`;
         }).subscribe((url) => {
 
         }, (error: any | Response) => observer.error(error));*/
 
-//        return `${this.serverUrl}${url}`;
-        observer.next(`${this.serverUrl}${url}`);
+//        return `${AppSettings.API_ENDPOINT}${url}`;
+        observer.next(`${AppSettings.API_ENDPOINT}${url}`);
         observer.complete();
 
       } else {
-        this.serverUrl = "https://testapi.coursaretail.com/v1/coursa/";
-        observer.next(`${this.serverUrl}${url}`);
+        observer.next(`${AppSettings.API_ENDPOINT}${url}`);
         observer.complete();
       }
     });
