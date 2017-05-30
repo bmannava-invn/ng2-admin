@@ -7,14 +7,10 @@
 
 
 ## Features
+* Angular
 * TypeScript
 * Webpack
-* Responsive layout
-* High resolution
-* Bootstrap 4 CSS Framework
+* Bootstrap 4
 * Sass
-* Angular
-* jQuery
-* Charts (Chartist, Chart.js)
-* Maps (Google, Leaflet, amMap)
-* and many more!
+* Charts (High charts, Chart.js)
+* Maps (Google, Leaflet)
